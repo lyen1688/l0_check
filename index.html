@@ -127,7 +127,7 @@
         });
 
         async function processBatch(addresses, startIndex, airdropWalletsCount, totalAirdropAmount) {
-            const batchSize = 10; // 每轮最多10个地址
+            const batchSize = 1; // 每轮最多10个地址
             const endIndex = Math.min(startIndex + batchSize, addresses.length);
             const batch = addresses.slice(startIndex, endIndex);
 
