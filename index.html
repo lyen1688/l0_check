@@ -168,7 +168,7 @@
                     processBatch(addresses, endIndex, airdropWalletsCount, totalAirdropAmount);
                 }
             } catch (error) {
-                if (retryCount < 5) {
+                if (retryCount < 3) {
                     console.error(`Retrying... (${retryCount + 1})`);
                     setTimeout(() => {
                         processBatch(addresses, startIndex, airdropWalletsCount, totalAirdropAmount, retryCount + 1);
@@ -178,6 +178,11 @@
                     batch.forEach((address, index) => {
                         document.getElementById('amount-' + (startIndex + index)).textContent = '查询失败';
                     });
+                    if (endIndex < addresses.length) {
+                        processBatch(addresses, endIndex, airdropWalletsCount, totalAirdropAmount);
+                    } else {
+                        addExportButton();
+                    }
                 }
             }
         }
@@ -214,3 +219,4 @@
     </script> 
     
 </body>
+</html>
